@@ -1,13 +1,75 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  font-family: "Roboto Mono", monospace;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #222831;
+}
+
+.todo-form {
+  margin: auto;
+  width: 173px;
+}
+
+.todo-list {
+  margin: 0 auto;
+  width: 50%;
+  padding: 10px;
+}
+
+li {
+  background-color: #181c22;
+  margin: 5px;
+  padding: 3px;
+  float: left;
+}
+
+span {
+  display: inline-block;
+  width: 10px;
+}
+
+.todo-item-done {
+  text-decoration: line-through;
+  background-color: rgba(65, 225, 126, 1);
+}
+
+.checkmark:hover {
+  cursor: pointer;
+  background-color: rgba(65, 225, 126, 1);
+}
+
+.item-remove:hover {
+  cursor: pointer;
+  background-color: rgba(225, 65, 65, 1);
+}
+
+.options {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.checkmark {
+  background-color: rgba(65, 225, 126, 0.8);
+  text-align: center;
+}
+
+.item-remove {
+  background-color: rgba(225, 65, 65, 0.8);
+  text-align: center;
+}
+
+ul {
+  padding: 0px;
+  list-style: none;
+}
+
+input {
+  background-color: #181c22;
+  border: none;
+  color: white;
+}
+
+.todo-item input {
+  text-align: center;
 }
