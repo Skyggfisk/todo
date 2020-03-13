@@ -1,19 +1,22 @@
-import * as React from "react";
+import React, { FC, ChangeEvent, useRef, useState, KeyboardEvent } from "react";
 import shortid from "shortid";
-import { TodoInterface, TodoFormInterface } from "./../interfaces";
+import { TodoInterface } from "./../interfaces";
+import styled from "styled-components";
 
-// Todo form component
-const TodoForm = (props: TodoFormInterface) => {
-  // Ref for form input
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  // Form state
-  const [formState, setFormState] = React.useState("");
+interface TodoFormInterface {
+  todos: TodoInterface[];
+  handleTodoCreate: (todo: TodoInterface) => void;
+}
 
-  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+export const TodoForm: FC<TodoFormInterface> = (props: TodoFormInterface) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [formState, setFormState] = useState("");
+
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     setFormState(event.target.value);
   }
 
-  function handleInputEnter(event: React.KeyboardEvent) {
+  function handleInputEnter(event: KeyboardEvent) {
     if (event.key === "Enter") {
       const newTodo: TodoInterface = {
         id: shortid.generate(),
@@ -30,16 +33,26 @@ const TodoForm = (props: TodoFormInterface) => {
   }
 
   return (
-    <div className="todo-form">
-      <input
+    <FormWrapper>
+      <FormInput
         ref={inputRef}
         type="text"
         placeholder="Enter new todo..."
         onChange={event => handleInputChange(event)}
         onKeyPress={event => handleInputEnter(event)}
       />
-    </div>
+    </FormWrapper>
   );
 };
 
-export default TodoForm;
+const FormWrapper = styled.div`
+  margin: auto;
+  width: 173px;
+`;
+
+const FormInput = styled.input`
+  background-color: #181c22;
+  border: none;
+  color: white;
+  padding: 2px 5px;
+`;

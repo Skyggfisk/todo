@@ -1,5 +1,5 @@
 {
-  "homepage": "http://skyggfisk.github.io/react-todo-app",
+  "homepage": "http://skyggfisk.github.io/todo/",
   "name": "react-ts-todo",
   "version": "0.1.0",
   "private": true,
@@ -7,7 +7,8 @@
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,6 +42,7 @@
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/shortid": "0.0.29",
+    "@types/styled-components": "^5.0.0",
     "gh-pages": "^2.1.1",
     "react-scripts": "3.3.0",
     "typescript": "^3.7.3"

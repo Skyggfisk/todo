@@ -1,11 +1,11 @@
-import * as React from "react";
-import "./App.css";
+import React, { FC, ChangeEvent } from "react";
+import styled from "styled-components";
 
-import TodoForm from "./components/todo-form";
-import TodoList from "./components/todo-list";
+import { TodoForm } from "./components/todo-form";
+import { TodoList } from "./components/todo-list";
 import { TodoInterface } from "./interfaces";
 
-const App = () => {
+export const App: FC = () => {
   const [todos, setTodos] = React.useState<TodoInterface[]>([]);
 
   function handleTodoCreate(todo: TodoInterface) {
@@ -16,10 +16,7 @@ const App = () => {
     setTodos(newTodosState);
   }
 
-  function handleTodoUpdate(
-    event: React.ChangeEvent<HTMLInputElement>,
-    id: string
-  ) {
+  function handleTodoUpdate(event: ChangeEvent<HTMLInputElement>, id: string) {
     const newTodosState: TodoInterface[] = [...todos];
 
     newTodosState.find((todo: TodoInterface) => todo.id === id)!.text =
@@ -48,7 +45,7 @@ const App = () => {
     setTodos(newTodosState);
   }
 
-  function handleTodoBlur(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleTodoBlur(event: ChangeEvent<HTMLInputElement>) {
     if (event.target.value.length === 0) {
       event.target.classList.add("todo-input-error");
     } else {
@@ -57,7 +54,7 @@ const App = () => {
   }
 
   return (
-    <div className="app">
+    <AppContainer>
       <TodoForm todos={todos} handleTodoCreate={handleTodoCreate} />
       <TodoList
         todos={todos}
@@ -66,8 +63,8 @@ const App = () => {
         handleTodoRemove={handleTodoRemove}
         handleTodoUpdate={handleTodoUpdate}
       />
-    </div>
+    </AppContainer>
   );
 };
 
-export default App;
+const AppContainer = styled.div``;
